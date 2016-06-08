@@ -9,10 +9,26 @@ public class HeartModel implements HeartModelInterface, Runnable {
     int bpm = 90;
 	Random random = new Random(System.currentTimeMillis());
 	Thread thread;
+	private static HeartModel uniqueInstance;
 
-	public HeartModel() {
+	private HeartModel() {
 		thread = new Thread(this);
 		thread.start();
+
+	}
+	public static HeartModel getInstance() {
+
+				if (uniqueInstance == null) {
+
+					//System.out.println("Preuba linda");
+					uniqueInstance = new HeartModel();
+				}
+				else
+				{
+					//System.out.println("Preuba fallida");
+				}
+				return uniqueInstance;
+
 	}
 
 	public void run() {
