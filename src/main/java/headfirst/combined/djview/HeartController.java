@@ -3,7 +3,7 @@ package headfirst.combined.djview;
 public class HeartController implements ControllerInterface {
 	HeartModel model;
 	DJView view;
-  
+    int bpm = 0;
 	public HeartController(HeartModel model) {
 		this.model = model;
 		view = new DJView(this, new HeartAdapter(model));
@@ -18,12 +18,29 @@ public class HeartController implements ControllerInterface {
 	public void stop() {}
     
 	public void increaseBPM() {
-        int bpm = model.getHeartRate();
-        setBPM(bpm+1);}
+
+        HeartModel model= HeartModel.getInstance();
+
+      /*  int bpm = model.getHeartRate();
+        setBPM(bpm+1);
+*/
+     /*   if (bpm == model.getHeartRate()) {
+            bpm = model.getHeartRate();
+            setBPM(bpm + 1);
+        } else {
+           bpm=bpm+1;
+            System.out.println("ya hay creados " + bpm);
+          // setBPM(bpm);
+
+            //	}
+        }*/
+    }
     
 	public void decreaseBPM() {}
   
- 	public void setBPM(int bpm) {model.bpm=bpm*1000;}
+ 	public void setBPM(int bpm) {
+        //model.bpm=bpm;
+         }
 
 }
 
