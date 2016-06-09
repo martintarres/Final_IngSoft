@@ -6,7 +6,7 @@ public class HeartModel implements HeartModelInterface, Runnable {
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
 	int time = 1000;
-    int bpm = 90;
+    int bpm = 85000;
 	Random random = new Random(System.currentTimeMillis());
 	Thread thread;
 	private static HeartModel uniqueInstance;
@@ -32,14 +32,16 @@ public class HeartModel implements HeartModelInterface, Runnable {
 	}
 
 	public void run() {
-		int lastrate = -1;
+
+
+	int lastrate = -1;
 
 		for(;;) {
 			int change = random.nextInt(10);
 			if (random.nextInt(2) == 0) {
 				change = 0 - change;
 			}
-			int rate = 60000/(time + change);
+			int rate = bpm/(time + change);
 			if (rate < 120 && rate > 50) {
 				time += change;
 				notifyBeatObservers();
@@ -54,7 +56,7 @@ public class HeartModel implements HeartModelInterface, Runnable {
 		}
 	}
 	public int getHeartRate() {
-		return 60000/time;
+		return bpm/time;
 	}
 
 	public void registerObserver(BeatObserver o) {

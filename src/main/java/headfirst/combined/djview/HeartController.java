@@ -1,10 +1,10 @@
 package headfirst.combined.djview;
   
 public class HeartController implements ControllerInterface {
-	HeartModelInterface model;
+	HeartModel model;
 	DJView view;
   
-	public HeartController(HeartModelInterface model) {
+	public HeartController(HeartModel model) {
 		this.model = model;
 		view = new DJView(this, new HeartAdapter(model));
         view.createView();
@@ -17,11 +17,14 @@ public class HeartController implements ControllerInterface {
  
 	public void stop() {}
     
-	public void increaseBPM() {}
+	public void increaseBPM() {
+        int bpm = model.getHeartRate();
+        setBPM(bpm+1);}
     
 	public void decreaseBPM() {}
   
- 	public void setBPM(int bpm) {}
+ 	public void setBPM(int bpm) {model.bpm=bpm*1000;}
+
 }
 
 
