@@ -29,7 +29,7 @@ public class HeartModel implements HeartModelInterface, Runnable {
 				{
 					uniqueInstance.contador++;
 
-					System.out.println("Preuba fallida "+ uniqueInstance.contador);
+					//System.out.println("Preuba fallida "+ uniqueInstance.contador);
 				}
 				return uniqueInstance;
 
