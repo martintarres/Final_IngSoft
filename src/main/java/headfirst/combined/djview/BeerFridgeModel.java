@@ -7,7 +7,7 @@ import headfirst.combined.djview.BeatObserver;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BeerFridgeModel implements HeartModelInterface, Runnable {
+public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
 /*    private static int tempDeseada = 10 ;                                                //Agrego esto
     //private int bpm                                                       //cambiarle por esto mejor
     private static int tempActual =20;                                                 //Agrego esto
@@ -150,7 +150,7 @@ public class BeerFridgeModel implements HeartModelInterface, Runnable {
     Thread thread;
     private static BeerFridgeModel uniqueInstance;
     int contador;
-    private static int tempDeseada = 10 ;
+     int tempDeseada = 10 ;
     private static int ruido;
     private int cambio = 1;
 
@@ -230,9 +230,10 @@ public class BeerFridgeModel implements HeartModelInterface, Runnable {
 
 
 
+
     @Override
-    public int getHeartRate() {
-       return 0;
+    public int getTempDeseada() {
+        return tempDeseada;
     }
 
     public void registerObserver(BeatObserver o) {

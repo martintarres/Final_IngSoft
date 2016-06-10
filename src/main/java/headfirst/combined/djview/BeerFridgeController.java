@@ -7,10 +7,13 @@ public class BeerFridgeController implements ControllerInterface {
 
     BeerFridgeModel model;
     DJView view;
+    BeerFridgeAdapter bfAdapter;
+
+
 
     public BeerFridgeController(BeerFridgeModel model) {
         this.model = model;
-        view = new DJView(this,new HeartAdapter(model));
+        view = new DJView(this,new BeerFridgeAdapter(model));
         view.createView();
         view.createControls();
         view.disableStopMenuItem();
@@ -37,6 +40,7 @@ public class BeerFridgeController implements ControllerInterface {
     @Override
     public void start() {
 
+
     }
 
     @Override
@@ -47,7 +51,8 @@ public class BeerFridgeController implements ControllerInterface {
     public void increaseBPM() {
             //int bpm = model.getBPM();
             //model.setBPM(bpm + 1);
-
+        int bpm=bfAdapter.getBPM();
+        bfAdapter.setBPM(bpm+1);
     }
 
 
@@ -57,7 +62,7 @@ public class BeerFridgeController implements ControllerInterface {
     }
 
     public void setBPM(int bpm) {
-            //model.setBPM(bpm);
+            bfAdapter.setBPM(bpm);
         }
 
     }

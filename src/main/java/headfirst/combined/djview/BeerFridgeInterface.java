@@ -5,15 +5,11 @@ package headfirst.combined.djview;
  */
 public interface BeerFridgeInterface {
 
-        void initialize();
 
-        void on();
 
-        void off();
 
-        void setBPM(int bpm);
 
-        int getBPM();
+        int getTempDeseada();
 
         void registerObserver(BeatObserver o);
 

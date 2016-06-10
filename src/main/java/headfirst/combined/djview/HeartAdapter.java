@@ -2,6 +2,7 @@ package headfirst.combined.djview;
 
 public class HeartAdapter implements BeatModelInterface {
 		HeartModelInterface heart;
+
  
 	public HeartAdapter(HeartModelInterface heart) {this.heart = heart;	}
 
