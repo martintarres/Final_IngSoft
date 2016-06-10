@@ -61,7 +61,9 @@ public class HeartModel implements HeartModelInterface, Runnable {
 	}
 	public int getHeartRate() {
 		return contador;
+
 	}
+
 
 	public void registerObserver(BeatObserver o) {
 		beatObservers.add(o);

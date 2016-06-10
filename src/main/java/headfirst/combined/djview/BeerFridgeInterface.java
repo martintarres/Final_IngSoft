@@ -3,8 +3,8 @@ package headfirst.combined.djview;
 /**
  * Created by martin on 09/06/2016.
  */
-public class BeerFridgeInterface {
-    public interface BeatModelInterface {
+public interface BeerFridgeInterface {
+
         void initialize();
 
         void on();
@@ -22,5 +22,5 @@ public class BeerFridgeInterface {
         void registerObserver(BPMObserver o);
 
         void removeObserver(BPMObserver o);
-    }
+
 }

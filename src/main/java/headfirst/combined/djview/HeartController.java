@@ -3,7 +3,7 @@ package headfirst.combined.djview;
 public class HeartController implements ControllerInterface {
 	HeartModel model;
 	DJView view;
-    int bpm = 0;
+
 	public HeartController(HeartModel model) {
 		this.model = model;
 		view = new DJView(this, new HeartAdapter(model));
