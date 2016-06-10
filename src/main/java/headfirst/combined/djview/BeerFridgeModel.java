@@ -1,22 +1,45 @@
-package combined.djview;
+package headfirst.combined.djview;
+
 import headfirst.combined.djview.BPMObserver;
 import headfirst.combined.djview.BeatModelInterface;
 import headfirst.combined.djview.BeatObserver;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class BeerFridgeModel implements BeatModelInterface, Runnable {
+    private int tempDeseada;                                                //Agrego esto
+    //private int bpm                                                       //cambiarle por esto mejor
+    private int tempActual;                                                 //Agrego esto
+
     ArrayList beatObservers = new ArrayList();
     ArrayList bpmObservers = new ArrayList();
-    Random random = new Random(System.currentTimeMillis());
+    Random random;                                                          //Agrego ESTA
+    private int ruido;
     Thread thread;
+    private int cambio = 1;                                                     //Despues se le puede setear el cambio?
 
-/*
-    private BeerFridgeModel{
+    private static BeerFridgeModel uniqueInstance;
+
+
+    private BeerFridgeModel (){
+        uniqueInstance.tempDeseada=10;
+        uniqueInstance.tempActual=20;
         Thread thread= new Thread( this);
         thread.start();
     }
-    */
+    public static BeerFridgeModel getInstance() {
+
+        if (uniqueInstance == null) {
+
+            uniqueInstance = new BeerFridgeModel();
+            uniqueInstance.tempDeseada=10;
+            uniqueInstance.tempActual=0;
+
+        }
+        return uniqueInstance;
+
+    }
     @Override
     public void initialize() {
 
@@ -34,12 +57,15 @@ public class BeerFridgeModel implements BeatModelInterface, Runnable {
 
     @Override
     public void setBPM(int bpm) {
+        uniqueInstance.tempDeseada=bpm;                                                 //Setea la temp deseada
+        //notifyBPMObservers();                                                           // Actualizacion ?
+
 
     }
 
     @Override
     public int getBPM() {
-        return 0;
+        return uniqueInstance.tempActual;                                               //Devuelve la temp Actual
     }
 
     @Override
@@ -83,29 +109,27 @@ public class BeerFridgeModel implements BeatModelInterface, Runnable {
 
     @Override
     public void run() {
-/*
-    //    int lastrate = -1;
-
-        for(;;) {
-            int change =random.nextInt(10);
-            if (random.nextInt(2) == 0) {
-                time += change;
-            }
-            int rate = bpm/(time + change);
-            if (rate < 120 && rate > 20) {
-                time += change;
-                notifyBeatObservers();
-                if (rate != lastrate) {
-                    lastrate = rate;
-                    notifyBPMObservers();
-                }
-            }
+        while(true) {
+            ruido = (int)(random.nextDouble() * 10 - 5);                      //Numeros aleatorios entre el 5 y -5
+            this.tempActual= this.ruido + this.tempActual;
+            notifyBeatObservers();                                             // Actualiza el cambio
             try {
-                Thread.sleep(time);
+                Thread.sleep(1000);                                            // Duerme 1 segundo para mantener el cambio
             } catch (Exception e) {}
+            if(tempActual>tempDeseada){
+               tempActual=tempActual-cambio;
+                notifyBeatObservers();                                          //actualiza la vista
+            }
+            else{
+                tempActual=tempActual+cambio;
+                notifyBeatObservers();
+            }
+
+
         }
-    }
-*/
+
+
     }
 
 }
+// VEr como actualiza bpm o temp actual
