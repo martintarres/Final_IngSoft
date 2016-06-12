@@ -8,8 +8,13 @@ public interface BeerFridgeInterface {
 
 
 
-
+        void on();
+        void off();
+        void setTempDeseada(int temp);
+        void setTempActual(int temp);
+        int getTempActual();
         int getTempDeseada();
+
 
         void registerObserver(BeatObserver o);
 

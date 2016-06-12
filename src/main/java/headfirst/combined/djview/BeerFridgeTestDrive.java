@@ -6,7 +6,7 @@ package  headfirst.combined.djview;
  */
 public class BeerFridgeTestDrive {
     public static void main (String[] args) {
-        BeerFridgeModel beerfridgemodel = BeerFridgeModel.getInstance();
-        ControllerInterface controller = new BeerFridgeController(beerfridgemodel);
+        BeerFridgeInterface beerFridgemodel = BeerFridgeModel.getInstance();
+        ControllerInterface controller = new BeerFridgeController(beerFridgemodel);
     }
 }

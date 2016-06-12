@@ -5,65 +5,49 @@ package headfirst.combined.djview;
  */
 public class BeerFridgeController implements ControllerInterface {
 
-    BeerFridgeModel model;
+    BeerFridgeInterface model;
     DJView view;
-    BeerFridgeAdapter bfAdapter;
 
-
-
-    public BeerFridgeController(BeerFridgeModel model) {
+    public BeerFridgeController(BeerFridgeInterface model) {
         this.model = model;
-        view = new DJView(this,new BeerFridgeAdapter(model));
+        view = new DJView(this, new BeerFridgeAdapter(model));                      //qu{e onda esto?
+        //view = new DJView(this, model);
         view.createView();
         view.createControls();
         view.disableStopMenuItem();
         view.enableStartMenuItem();
-       // model.initialize();
+        // model.initialize();
     }
 
 
-    /*public void start() {
+    public void start() {
         model.on();
         view.disableStartMenuItem();
         view.enableStopMenuItem();
 
     }
 
-
-    public void stop(){
-            model.off();
-            view.disableStopMenuItem();
-            view.enableStartMenuItem();
-    }
-*/
-
-    @Override
-    public void start() {
-
-
-    }
-
-    @Override
     public void stop() {
-
+        model.off();
+        view.disableStopMenuItem();
+        view.enableStartMenuItem();
     }
 
-    public void increaseBPM() {
-            //int bpm = model.getBPM();
-            //model.setBPM(bpm + 1);
-        int bpm=bfAdapter.getBPM();
-        bfAdapter.setBPM(bpm+1);
+    public void increaseBPM() {                     // increase
+        int temNueva = model.getTempDeseada();
+        model.setTempDeseada(temNueva + 1);
     }
-
 
     public void decreaseBPM() {
-        //int bpm = model.getBPM();
-        //model.setBPM(bpm - 1);
+        int temNueva = model.getTempDeseada();
+        model.setTempDeseada(temNueva - 1);
     }
-
-    public void setBPM(int bpm) {
-            bfAdapter.setBPM(bpm);
-        }
-
+    public void setBPM(int temNueva) {
+        model.setTempDeseada(temNueva);
     }
+}
+
+
+
+
 

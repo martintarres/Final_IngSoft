@@ -143,46 +143,42 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
 
     ArrayList beatObservers = new ArrayList();
     ArrayList bpmObservers = new ArrayList();
-    int time = 1000;
-    int bpm = 85000;
-    private static int tempActual =20;
-    Random random = new Random(System.currentTimeMillis());
-    Thread thread;
+    private static int tempActual;
+    private static int tempDeseada;
+    Random random;
+    static Thread thread;
     private static BeerFridgeModel uniqueInstance;
-    int contador;
-     int tempDeseada = 10 ;
-    private static int ruido;
-    private int cambio = 1;
+    //int contador;                                                                                 //no hace falta contador
+    private  int ruido;
+    private  int cambio = 1;
 
     private BeerFridgeModel() {
-        thread = new Thread(this);
-        thread.start();
-
+        tempDeseada=10;                                                                             //ver si se la puede resetear
+        //tempActual = random.nextInt(20);
+        tempActual=20;
     }
 
     public static BeerFridgeModel getInstance() {
 
         if (uniqueInstance == null) {
 
-            //System.out.println("Preuba linda");
             uniqueInstance = new BeerFridgeModel();
-            uniqueInstance.contador = 0;
-        } else {
-            uniqueInstance.contador++;
-
-            //System.out.println("Preuba fallida "+ uniqueInstance.contador);
+            BeerFridgeModel.thread = new Thread(uniqueInstance);
+            thread.start();
         }
-        return uniqueInstance;
+            return BeerFridgeModel.uniqueInstance;
+
 
     }
 
-   //ublic void run() {
-
         public void run() {
+
             while(true) {
+
                 ruido = (int)(random.nextDouble() * 10 - 5);                      //Numeros aleatorios entre el 5 y -5
                 this.tempActual= this.ruido + this.tempActual;
                 notifyBeatObservers();                                             // Actualiza el cambio
+                System.out.println(" aca llega?");
                 try {
                     thread.sleep(1000);                                            // Duerme 1 segundo para mantener el cambio
                 } catch (Exception e) {}
@@ -195,10 +191,10 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
                     tempActual=tempActual+cambio;
                     notifyBeatObservers();
                }
-                try {
+                /*try {                                                                // creeria que no hace falta dormirlo dos veces
                     Thread.sleep(time);
                 } catch (Exception e) {
-                }
+                }*/
             }
 
             }
@@ -229,11 +225,29 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
         }*/
 
 
+    public void on()
+    {
+        thread.run();
+    }
+    public void off() {
+        //thread.stop();
+        try {
+            thread.wait();
+        } catch (Exception e) {
+        }
+    }
 
 
-    @Override
     public int getTempDeseada() {
         return tempDeseada;
+    }
+    public void setTempDeseada(int temp){
+        tempDeseada=temp;
+    }
+
+    public int getTempActual(){ return tempActual;}
+    public void setTempActual(int temp) {
+        tempActual=temp;
     }
 
     public void registerObserver(BeatObserver o) {

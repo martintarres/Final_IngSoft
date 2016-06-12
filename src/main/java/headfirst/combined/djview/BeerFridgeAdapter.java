@@ -3,54 +3,49 @@ package headfirst.combined.djview;
 /**
  * Created by Martin on 10/06/2016.
  */
-public class BeerFridgeAdapter implements BeatModelInterface {
 
-    BeerFridgeModel bf=BeerFridgeModel.getInstance();
-    //@Override
-    public BeerFridgeAdapter(BeerFridgeModel bf){this.bf=bf;}
+public class BeerFridgeAdapter implements BeatModelInterface {
+    BeerFridgeInterface bf;
+
+
+    public BeerFridgeAdapter(BeerFridgeInterface beerFridge) {
+        bf=beerFridge;
+    }
+
 
     public void initialize() {
 
     }
 
-    @Override
     public void on() {
-
+        bf.on();
     }
 
-    @Override
     public void off() {
-
+        bf.off();
     }
 
-    @Override
     public void setBPM(int bpm) {
-        
-
-
+        bf.setTempDeseada(bpm);
     }
 
-    @Override
     public int getBPM() {
-        return bf.getTempDeseada();
+        return bf.getTempActual();
     }
 
-    @Override
+
     public void registerObserver(BeatObserver o) {
 
     }
 
-    @Override
     public void removeObserver(BeatObserver o) {
 
     }
 
-    @Override
     public void registerObserver(BPMObserver o) {
 
     }
 
-    @Override
     public void removeObserver(BPMObserver o) {
 
     }
