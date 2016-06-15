@@ -8,14 +8,14 @@ public interface BeerFridgeInterface {
 
 
 
-        void on();
+       /* void on();
         void off();
         void setTempDeseada(int temp);
         void setTempActual(int temp);
         int getTempActual();
-        int getTempDeseada();
+        int getTempDeseada();*/
 
-
+        public int getHeartRate();
         void registerObserver(BeatObserver o);
 
         void removeObserver(BeatObserver o);

@@ -7,43 +7,55 @@ public class BeerFridgeController implements ControllerInterface {
 
     BeerFridgeInterface model;
     DJView view;
+    NuevaVista nvaVista;
+    BeerFridgeAdapter bfAdapt;
 
     public BeerFridgeController(BeerFridgeInterface model) {
         this.model = model;
-        view = new DJView(this, new BeerFridgeAdapter(model));                      //qu{e onda esto?
-        //view = new DJView(this, model);
+        bfAdapt=new BeerFridgeAdapter(model);
+        /*view = new DJView(this, bfAdapt);
+
         view.createView();
-        view.createControls();
-        view.disableStopMenuItem();
-        view.enableStartMenuItem();
+        view.createControls();*/
+       // view.disableStopMenuItem();
+        //view.enableStartMenuItem();
         // model.initialize();
+        nvaVista=new NuevaVista(this,bfAdapt);
+        nvaVista.construirVentanaControles();
+        nvaVista.construirVentanaSalida();
+
     }
 
 
     public void start() {
-        model.on();
-        view.disableStartMenuItem();
-        view.enableStopMenuItem();
 
     }
 
     public void stop() {
-        model.off();
-        view.disableStopMenuItem();
-        view.enableStartMenuItem();
-    }
+          }
 
-    public void increaseBPM() {                     // increase
-        int temNueva = model.getTempDeseada();
-        model.setTempDeseada(temNueva + 1);
+    public void increaseBPM() {
+            // increase
+       /* int temNueva = model.getTempDeseada();
+        model.setTempDeseada(temNueva + 1);*/
+
+        int tempNva=bfAdapt.getBPM();
+       this.setBPM(tempNva+1);
+
     }
 
     public void decreaseBPM() {
-        int temNueva = model.getTempDeseada();
-        model.setTempDeseada(temNueva - 1);
+        //int temNueva = model.getTempDeseada();
+       // model.setTempDeseada(temNueva - 1);
+        int tempNueva=bfAdapt.getBPM();
+        this.setBPM(tempNueva-1);
     }
-    public void setBPM(int temNueva) {
-        model.setTempDeseada(temNueva);
+    public void setBPM(int bpm) {
+        //model.setTempDeseada(temNueva);
+
+        bfAdapt.setBPM(bpm);
+
+
     }
 }
 

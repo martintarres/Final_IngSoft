@@ -6,7 +6,8 @@ import javax.swing.*;
 
 public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 	BeatModelInterface model;
-	ControllerInterface controller;
+    ControllerInterface controller;
+
     JFrame viewFrame;
     JPanel viewPanel;
 	BeatBar beatBar;

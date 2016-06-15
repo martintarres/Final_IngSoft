@@ -5,11 +5,13 @@ package headfirst.combined.djview;
  */
 
 public class BeerFridgeAdapter implements BeatModelInterface {
-    BeerFridgeInterface bf;
+    BeerFridgeModel bf=new BeerFridgeModel();
+    BeerFridgeInterface beerFridge;
+
 
 
     public BeerFridgeAdapter(BeerFridgeInterface beerFridge) {
-        bf=beerFridge;
+        this.beerFridge=beerFridge;
     }
 
 
@@ -18,35 +20,41 @@ public class BeerFridgeAdapter implements BeatModelInterface {
     }
 
     public void on() {
-        bf.on();
+
     }
 
     public void off() {
-        bf.off();
+
     }
 
     public void setBPM(int bpm) {
-        bf.setTempDeseada(bpm);
+        bf.tempActual=bpm;
+
     }
 
     public int getBPM() {
-        return bf.getTempActual();
+        return bf.getHeartRate();
+
+
     }
 
 
     public void registerObserver(BeatObserver o) {
-
+beerFridge.registerObserver(o);
     }
 
     public void removeObserver(BeatObserver o) {
 
+       beerFridge.removeObserver(o);
     }
 
     public void registerObserver(BPMObserver o) {
 
+    beerFridge.registerObserver(o);
     }
 
     public void removeObserver(BPMObserver o) {
+      beerFridge.registerObserver(o);
 
     }
 }
