@@ -7,7 +7,7 @@ public class HeartTestDrive {
         ControllerInterface model = new HeartController(heartModel);
         //HeartModel heart2 = HeartModel.getInstance();
 
-        BeerFridgeInterface beerFridgemodel=new BeerFridgeModel();
+        BeerFridgeInterface beerFridgemodel= BeerFridgeModel.getInstance();
         ControllerInterface controller2 = new BeerFridgeController(beerFridgemodel);
 
           BeatModelInterface model1 = new BeatModel();

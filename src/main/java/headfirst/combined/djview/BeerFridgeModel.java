@@ -10,17 +10,29 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
 
     ArrayList beatObservers = new ArrayList();
     ArrayList bpmObservers = new ArrayList();
-    int time = 100;
-    int tempActual=8000;
-    Random random = new Random(System.currentTimeMillis());
+    int tempActual;
+    Random random = new Random();
     Thread thread;
+    private boolean var;
+    private int ruido;
+    int tempDeseada;
+    private int CantBirra;
+    private static BeerFridgeModel uniqueInstance;
+
+    public static BeerFridgeModel getInstance() {
+        if(uniqueInstance == null){
+            uniqueInstance= new BeerFridgeModel();
+        }
+
+        return uniqueInstance;
+    }
 
 
-
-   public BeerFridgeModel() {
+   private BeerFridgeModel() {
 
         thread = new Thread(this);
         thread.start();
+        tempActual=20;
 
     }
 
@@ -28,30 +40,27 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
     public void run() {
 
 
-        int lastrate = -1;
-
         for(;;) {
-            int change =random.nextInt(10);
-            if (random.nextInt(2) == 0) {
-                time += change;
+
+            var=random.nextBoolean();
+            ruido=(int) random.nextInt(3);
+            if(var)
+            {
+                tempActual=tempActual+ruido;
             }
-            int rate = tempActual/(time + change);
-            if (rate < 120 && rate > -30) {
-                time += change;
-                notifyBeatObservers();
-                if (rate != lastrate) {
-                    lastrate = rate;
-                    notifyBPMObservers();
-                }
+            else{
+                tempActual=tempActual-ruido;
             }
+            notifyBeatObservers();
+            notifyBPMObservers();
             try {
-                Thread.sleep(time);
+                Thread.sleep(1000);
            } catch (Exception e) {}
         }
     }
     public int getHeartRate() {
 
-        return tempActual;
+        return tempDeseada;
 
     }
 
@@ -90,6 +99,10 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
             BPMObserver observer = (BPMObserver)bpmObservers.get(i);
             observer.updateBPM();
         }
+    }
+
+    public int getCantBirra(){
+        return CantBirra;
     }
 }
 

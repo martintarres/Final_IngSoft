@@ -5,7 +5,7 @@ package headfirst.combined.djview;
  */
 
 public class BeerFridgeAdapter implements BeatModelInterface {
-    BeerFridgeModel bf=new BeerFridgeModel();
+    BeerFridgeModel bf= BeerFridgeModel.getInstance();
     BeerFridgeInterface beerFridge;
 
 
@@ -28,7 +28,7 @@ public class BeerFridgeAdapter implements BeatModelInterface {
     }
 
     public void setBPM(int bpm) {
-        bf.tempActual=bpm;
+        bf.tempDeseada=bpm;
 
     }
 
