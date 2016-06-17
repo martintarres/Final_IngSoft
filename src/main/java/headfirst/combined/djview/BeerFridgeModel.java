@@ -29,7 +29,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
 
 
    private BeerFridgeModel() {
-
+       tempActual=20;
         thread = new Thread(this);
         thread.start();
         tempActual=20;

@@ -130,16 +130,10 @@ public class NuevaVista implements ActionListener, BeatObserver, BPMObserver {
 
     public void updateBPM() {
         if (model != null) {
-            int bpm = model.getBPM();
-            if (bpm == 0) {
-                if (etiquetaOut != null) {
-                    etiquetaOut.setText("No inicializada");
-                }
-            } else {
-                if (etiquetaOut != null) {
-                    etiquetaOut.setText("Temperatura Deseada ºC " + model.getBPM());
-                }
-            }
+
+            etiquetaOut.setText("Temperatura Actual ºC " + model.getBPM());
+
+
         }
     }
     public void updateBeat() {
