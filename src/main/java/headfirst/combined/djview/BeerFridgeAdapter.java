@@ -39,6 +39,7 @@ public class BeerFridgeAdapter implements BeatModelInterface {
     }
 
 
+
     public void registerObserver(BeatObserver o) {
 beerFridge.registerObserver(o);
     }

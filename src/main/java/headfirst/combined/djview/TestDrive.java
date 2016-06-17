@@ -6,14 +6,16 @@ package headfirst.combined.djview;
 public class TestDrive {
     public static void main(String[] args) {
 
-        //BeerFridgeModelInterface beerFridgeModel = BeerFridgeModel.
-        //HeartModel heartModel = HeartModel.getInstance();
-        //ControllerInterface model = new HeartController(heartModel);
-        //HeartModel heart2 = HeartModel.getInstance();
+        BeatModelInterface model1 = new BeatModel();
+        ControllerInterface controller = new BeatController(model1);
+
+        HeartModel heartModel = HeartModel.getInstance();
+        ControllerInterface controlHeart = new HeartController(heartModel);
 
 
-        //BeatModelInterface model1 = new BeatModel();
-        //ControllerInterface controller = new BeatController(model1);
+
+        BeerFridgeInterface beerFridgeModel = BeerFridgeModel.getInstance();
+        ControllerInterface controllerBeerFridge = new BeerFridgeController(beerFridgeModel);
 
 
     }

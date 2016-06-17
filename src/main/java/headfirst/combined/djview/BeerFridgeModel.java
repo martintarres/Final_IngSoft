@@ -55,7 +55,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
             notifyBeatObservers();
             notifyBPMObservers();
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
            } catch (Exception e) {}
             if(tempActual<tempDeseada)
             {
@@ -68,9 +68,8 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
             notifyBeatObservers();
             notifyBPMObservers();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (Exception e) {}
-
 
         }
     }
@@ -120,6 +119,19 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
     public int getCantBirra(){
         return CantBirra;
     }
+
+    public int getTempDeseada()
+    {
+        return tempDeseada;
+    }
+
+    /*public void esperando()
+    {
+        try
+        {
+            Thread.sleep(15000);
+        } catch (Exception e) {}
+    }*/
 }
 
 
