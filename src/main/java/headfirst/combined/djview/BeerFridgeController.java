@@ -6,19 +6,25 @@ package headfirst.combined.djview;
 public class BeerFridgeController implements ControllerInterface {
 
     BeerFridgeInterface model;
-    DJView view;
+    //DJView view;
+    NuevaVista nvaVista;
     BeerFridgeAdapter bfAdapt;
 
     public BeerFridgeController(BeerFridgeInterface model) {
         this.model = model;
         bfAdapt=new BeerFridgeAdapter(model);
-
+        /*
         view = new DJView(this, bfAdapt);
         view.createView();
         view.createControls();
         view.disableStopMenuItem();
         view.enableStartMenuItem();
          //model.initialize();
+         */
+        nvaVista=new NuevaVista(this,bfAdapt);
+        nvaVista.construirVentanaControles();
+        nvaVista.construirVentanaSalida();
+
     }
 
 
