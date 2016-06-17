@@ -1,18 +1,24 @@
 package headfirst.combined.djview;
   
 public class HeartController implements ControllerInterface {
-	HeartModel model;
+	HeartModelInterface model;
 	DJView view;
 
-	public HeartController(HeartModel model) {
+	public HeartController(HeartModelInterface model) {
 		this.model = model;
+		this.view=view;
 		view = new DJView(this, new HeartAdapter(model));
         view.createView();
         view.createControls();
 		view.disableStopMenuItem();
 		view.disableStartMenuItem();
 	}
-  
+
+	public HeartController(HeartModelInterface heartModel, DJView view) {
+		this.model=model;
+		this.view=view;
+	}
+
 	public void start() {}
  
 	public void stop() {}

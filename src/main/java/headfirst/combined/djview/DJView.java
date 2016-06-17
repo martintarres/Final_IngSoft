@@ -23,6 +23,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     JMenu menu;
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
+    String[] seleccion={"Heart Model","Beat Model","Beer Fridge"};
+    JComboBox<String> opcion= new JComboBox<String>(seleccion);
 
     public DJView(ControllerInterface controller, BeatModelInterface model) {	
 		this.controller = controller;
@@ -95,6 +97,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
         setBPMButton.addActionListener(this);
         increaseBPMButton.addActionListener(this);
         decreaseBPMButton.addActionListener(this);
+        opcion.addActionListener(this);
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 
@@ -108,6 +111,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
         insideControlPanel.add(enterPanel);
         insideControlPanel.add(setBPMButton);
         insideControlPanel.add(buttonPanel);
+        controlPanel.add(insideControlPanel);
+        insideControlPanel.add(opcion);
         controlPanel.add(insideControlPanel);
         
         bpmLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -144,7 +149,49 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 			controller.increaseBPM();
 		} else if (event.getSource() == decreaseBPMButton) {
 			controller.decreaseBPM();
-		}
+        } else if (event.getSource()==opcion){
+            if (opcion.getSelectedItem()== "Heart Model"){
+                controller.stop();
+                model.removeObserver((BeatObserver) this);
+                model.removeObserver((BPMObserver) this);
+                setModel(new HeartAdapter(HeartModel.getInstance()));
+                setController(new HeartController(HeartModel.getInstance(), this));
+                controller.start();
+                model.registerObserver((BeatObserver) this);
+                model.registerObserver((BPMObserver) this);
+                updateBeat();
+                updateBPM();
+
+
+            }
+            else if(opcion.getSelectedItem()== "Beat Model"){
+                controller.stop();
+                model.removeObserver((BeatObserver) this);
+                model.removeObserver((BPMObserver) this);
+                setModel(new BeatModel());
+                setController( new BeatController(model, this));
+                controller.start();
+                model.registerObserver((BeatObserver) this);
+                model.registerObserver((BPMObserver) this);
+                updateBeat();
+                updateBPM();
+
+
+
+            }
+            else if(opcion.getSelectedItem()== "Beer Fridge") {
+                controller.stop();
+                model.removeObserver((BeatObserver) this);
+                model.removeObserver((BPMObserver) this);
+                setModel(new BeerFridgeAdapter(BeerFridgeModel.getInstance()));
+                setController(new BeerFridgeController(BeerFridgeModel.getInstance()));
+                controller.start();
+                model.registerObserver((BeatObserver) this);
+                model.registerObserver((BPMObserver) this);
+                updateBeat();
+                updateBPM();
+            }
+        }
     }
 
 	public void updateBPM() {
@@ -167,4 +214,12 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 			 beatBar.setValue(100);
 		}
 	}
+
+    public void setController(ControllerInterface controller){
+        this.controller= controller;
+    }
+
+    public void setModel(BeatModelInterface newModel){
+        this.model=newModel;
+    }
 }

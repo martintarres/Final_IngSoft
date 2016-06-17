@@ -1,8 +1,6 @@
 package headfirst.combined.djview;
 
-/**
- * Created by Martin on 10/06/2016.
- */
+import headfirst.combined.djview.*;
 
 public class BeerFridgeAdapter implements BeatModelInterface {
     BeerFridgeModel bf= BeerFridgeModel.getInstance();
@@ -41,21 +39,21 @@ public class BeerFridgeAdapter implements BeatModelInterface {
 
 
     public void registerObserver(BeatObserver o) {
-beerFridge.registerObserver(o);
+        beerFridge.registerObserver(o);
     }
 
     public void removeObserver(BeatObserver o) {
 
-       beerFridge.removeObserver(o);
+        beerFridge.removeObserver(o);
     }
 
     public void registerObserver(BPMObserver o) {
 
-    beerFridge.registerObserver(o);
+        beerFridge.registerObserver(o);
     }
 
     public void removeObserver(BPMObserver o) {
-      beerFridge.registerObserver(o);
+        beerFridge.registerObserver(o);
 
     }
 }

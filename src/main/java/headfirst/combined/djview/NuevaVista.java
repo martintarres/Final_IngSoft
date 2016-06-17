@@ -106,8 +106,6 @@ public class NuevaVista implements ActionListener, BeatObserver, BPMObserver {
         panelContenedor.add(panelGeneral);
 
 
-
-
         ventana.pack();
         ventana.setVisible(true);
 
@@ -130,10 +128,16 @@ public class NuevaVista implements ActionListener, BeatObserver, BPMObserver {
 
     public void updateBPM() {
         if (model != null) {
-
-            etiquetaOut.setText("Temperatura Actual ºC " + model.getBPM());
-
-
+            int bpm = model.getBPM();
+            if (bpm == 0) {
+                if (etiquetaOut != null) {
+                    etiquetaOut.setText("offline");
+                }
+            } else {
+                if (etiquetaOut != null) {
+                    etiquetaOut.setText("TemperaturaºC " + model.getBPM());
+                }
+            }
         }
     }
     public void updateBeat() {

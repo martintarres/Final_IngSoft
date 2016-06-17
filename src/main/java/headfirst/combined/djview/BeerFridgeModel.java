@@ -6,7 +6,7 @@ import headfirst.combined.djview.BeatObserver;
 import java.util.*;
 
 
-public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
+public class BeerFridgeModel implements BeerFridgeInterface, Runnable{
 
     ArrayList beatObservers = new ArrayList();
     ArrayList bpmObservers = new ArrayList();
@@ -28,8 +28,8 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
     }
 
 
-   private BeerFridgeModel() {
-       tempActual=20;
+    BeerFridgeModel() {
+        tempActual=20;
         thread = new Thread(this);
         thread.start();
         tempActual=20;
@@ -56,7 +56,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
             notifyBPMObservers();
             try {
                 Thread.sleep(1000);
-           } catch (Exception e) {}
+            } catch (Exception e) {}
             if(tempActual<tempDeseada)
             {
                 tempActual++;

@@ -25,21 +25,26 @@ public class BeerFridgeController implements ControllerInterface {
         nvaVista.construirVentanaControles();
         nvaVista.construirVentanaSalida();
 
+
+
     }
-
-
+    public BeerFridgeController(BeerFridgeInterface model, NuevaVista view) {
+        this.model = model;
+        this.nvaVista = view;
+        bfAdapt.initialize();
+    }
     public void start() {
 
     }
 
     public void stop() {
 
-          }
+    }
 
     public void increaseBPM() {
 
         int tempNva=model.getTempDeseada();
-       this.setBPM(tempNva+1);
+        this.setBPM(tempNva+1);
 
     }
 
@@ -57,6 +62,7 @@ public class BeerFridgeController implements ControllerInterface {
 
     }
 }
+
 
 
 
