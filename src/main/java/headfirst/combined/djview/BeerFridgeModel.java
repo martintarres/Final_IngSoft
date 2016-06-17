@@ -33,6 +33,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
         thread = new Thread(this);
         thread.start();
         tempActual=20;
+        CantBirra=50;
 
     }
 
@@ -43,7 +44,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
         for(;;) {
 
             var=random.nextBoolean();
-            ruido=(int) random.nextInt(3);
+            ruido= random.nextInt(3);
             if(var)
             {
                 tempActual=tempActual+ruido;
@@ -54,13 +55,28 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable {
             notifyBeatObservers();
             notifyBPMObservers();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
            } catch (Exception e) {}
+            if(tempActual<tempDeseada)
+            {
+                tempActual++;
+            }
+            else if(tempActual>tempDeseada){
+                tempActual--;
+            }
+
+            notifyBeatObservers();
+            notifyBPMObservers();
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {}
+
+
         }
     }
     public int getHeartRate() {
 
-        return tempDeseada;
+        return tempActual;
 
     }
 
