@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class NuevaVista implements ActionListener, BeatObserver, BPMObserver {
+public class NuevaVista extends JFrame implements ActionListener, BeatObserver, BPMObserver {
     ControllerInterface controller;
     BeatModelInterface model;
 

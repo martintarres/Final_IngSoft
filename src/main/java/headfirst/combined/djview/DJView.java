@@ -7,6 +7,7 @@ import javax.swing.*;
 public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 	BeatModelInterface model;
     ControllerInterface controller;
+    BeerFridgeInterface model1;
 
     JFrame viewFrame;
     JPanel viewPanel;
@@ -32,6 +33,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 		model.registerObserver((BeatObserver)this);
 		model.registerObserver((BPMObserver)this);
     }
+
     
     public void createView() {
 		// Create all Swing components here
@@ -184,7 +186,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
                 model.removeObserver((BeatObserver) this);
                 model.removeObserver((BPMObserver) this);
                 setModel(new BeerFridgeAdapter(BeerFridgeModel.getInstance()));
-                setController(new BeerFridgeController(BeerFridgeModel.getInstance()));
+                setController(new BeerFridgeController(BeerFridgeModel.getInstance(), this));
                 controller.start();
                 model.registerObserver((BeatObserver) this);
                 model.registerObserver((BPMObserver) this);
@@ -203,7 +205,17 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 				}
 			} else {
 				if (bpmOutputLabel != null) {
-        			bpmOutputLabel.setText("Current BPM: " + model.getBPM());
+                        if(opcion.getSelectedItem()== "Heart Model"){
+                            bpmOutputLabel.setText("Numero de Intentos: " + model.getBPM());
+                        }
+                        else if (opcion.getSelectedItem()== "Beat Model"){
+                            bpmOutputLabel.setText("Current BPM: " + model.getBPM());
+                        }
+                        else if (opcion.getSelectedItem()== "Beer Fridge") {
+
+
+                            bpmOutputLabel.setText("Vista Nueva: " + model.getBPM());
+                        }
 				}
 			}
 		}

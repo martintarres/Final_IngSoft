@@ -6,33 +6,35 @@ package headfirst.combined.djview;
 public class BeerFridgeController implements ControllerInterface {
 
     BeerFridgeInterface model;
-    //DJView view;
-    NuevaVista nvaVista;
+    DJView view;
+    //NuevaVista nvaVista;
     BeerFridgeAdapter bfAdapt;
 
     public BeerFridgeController(BeerFridgeInterface model) {
         this.model = model;
-        bfAdapt=new BeerFridgeAdapter(model);
-        /*
-        view = new DJView(this, bfAdapt);
+       bfAdapt=new BeerFridgeAdapter(model);
+
+       view = new DJView(this, bfAdapt);
         view.createView();
         view.createControls();
         view.disableStopMenuItem();
         view.enableStartMenuItem();
          //model.initialize();
-         */
-        nvaVista=new NuevaVista(this,bfAdapt);
+
+      /*  nvaVista=new NuevaVista(this,new BeerFridgeAdapter(model));
         nvaVista.construirVentanaControles();
         nvaVista.construirVentanaSalida();
-
+        */
 
 
     }
-    public BeerFridgeController(BeerFridgeInterface model, NuevaVista view) {
+    public BeerFridgeController(BeerFridgeInterface beerModel, DJView view) {
         this.model = model;
-        this.nvaVista = view;
-        bfAdapt.initialize();
+        //this.nvaVista = nvaVista;
+       this.view=view;
+      //  bfAdapt.initialize();
     }
+
     public void start() {
 
     }
@@ -51,11 +53,11 @@ public class BeerFridgeController implements ControllerInterface {
     public void decreaseBPM() {
 
         int tempNew=model.getTempDeseada();
-        //int tempNueva=bfAdapt.getBPM();
+        int tempNueva= bfAdapt.getBPM();
         this.setBPM(tempNew-1);
     }
     public void setBPM(int bpm) {
-        //model.setTempDeseada(temNueva);
+      //  model.setTempDeseada(temNueva);
 
         bfAdapt.setBPM(bpm);
 

@@ -53,7 +53,7 @@ public class BeerFridgeAdapter implements BeatModelInterface {
     }
 
     public void removeObserver(BPMObserver o) {
-        beerFridge.registerObserver(o);
+        beerFridge.removeObserver(o);
 
     }
 }
