@@ -18,6 +18,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable{
     public int tempDeseada;
     private int CantBirra;
     private static BeerFridgeModel uniqueInstance;
+    public static  boolean Activo;
 
     public static BeerFridgeModel getInstance() {
         if(uniqueInstance == null){
@@ -35,6 +36,7 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable{
         thread.start();
         tempActual=20;
         CantBirra=50;
+
 
 
     }
@@ -83,12 +85,15 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable{
 
 
     public void registerObserver(BeatObserver o) {
+        Activo=true;
         beatObservers.add(o);
     }
 
     public void removeObserver(BeatObserver o) {
+        Activo=false;
         int i = beatObservers.indexOf(o);
         if (i >= 0) {
+
             beatObservers.remove(i);
         }
     }

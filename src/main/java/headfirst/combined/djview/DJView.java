@@ -210,7 +210,11 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 			int bpm = model.getBPM();
 			if (bpm == 0) {
 				if (bpmOutputLabel != null) {
+                    if(!BeerFridgeModel.Activo)
         			bpmOutputLabel.setText("offline");
+                    else{
+                        bpmOutputLabel.setText("Temp Actual: " + model.getBPM());
+                    }
 				}
 			} else {
 				if (bpmOutputLabel != null) {
