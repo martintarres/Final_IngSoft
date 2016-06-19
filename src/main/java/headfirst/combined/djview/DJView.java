@@ -156,8 +156,11 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
                 controller.stop();
                 model.removeObserver((BeatObserver) this);
                 model.removeObserver((BPMObserver) this);
-                setModel(new HeartAdapter(HeartModel.getInstance()));
-                setController(new HeartController(HeartModel.getInstance(), this));
+                HeartModel heart= HeartModel.getInstance();
+                //setModel(new HeartAdapter(HeartModel.getInstance()));
+                setModel( new HeartAdapter(heart));
+                //setController(new HeartController(HeartModel.getInstance(), this));
+                setController(new HeartController(heart,this));
                 controller.start();
                 model.registerObserver((BeatObserver) this);
                 model.registerObserver((BPMObserver) this);
@@ -185,7 +188,13 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
                 controller.stop();
                 model.removeObserver((BeatObserver) this);
                 model.removeObserver((BPMObserver) this);
-                setModel(new BeerFridgeAdapter(BeerFridgeModel.getInstance()));
+                //
+                //BeerFridgeInterface Beer = BeerFridgeModel.getInstance();
+               BeerFridgeModel Beer= BeerFridgeModel.getInstance();
+
+                //setModel(new BeerFridgeAdapter(BeerFridgeModel.getInstance()));
+                setModel(new BeerFridgeAdapter(Beer));
+
                 setController(new BeerFridgeController(BeerFridgeModel.getInstance(), this));
                 controller.start();
                 model.registerObserver((BeatObserver) this);
@@ -214,7 +223,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
                         else if (opcion.getSelectedItem()== "Beer Fridge") {
 
 
-                            bpmOutputLabel.setText("Vista Nueva: " + model.getBPM());
+                            bpmOutputLabel.setText("Temp Actual: " + model.getBPM());
                         }
 				}
 			}

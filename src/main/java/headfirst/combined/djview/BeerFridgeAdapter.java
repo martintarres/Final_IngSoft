@@ -3,13 +3,14 @@ package headfirst.combined.djview;
 import headfirst.combined.djview.*;
 
 public class BeerFridgeAdapter implements BeatModelInterface {
-    BeerFridgeModel bf= BeerFridgeModel.getInstance();
+    //BeerFridgeModel bf= BeerFridgeModel.getInstance();
     BeerFridgeInterface beerFridge;
 
 
 
     public BeerFridgeAdapter(BeerFridgeInterface beerFridge) {
         this.beerFridge=beerFridge;
+
     }
 
 
@@ -26,12 +27,13 @@ public class BeerFridgeAdapter implements BeatModelInterface {
     }
 
     public void setBPM(int bpm) {
-        bf.tempDeseada=bpm;
+        int temp =bpm;
+        this.beerFridge.setTempDeseada(temp);
 
     }
 
     public int getBPM() {
-        return bf.getHeartRate();
+        return beerFridge.getHeartRate();
 
 
     }

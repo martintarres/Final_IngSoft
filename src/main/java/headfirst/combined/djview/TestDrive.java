@@ -12,7 +12,7 @@ public class TestDrive {
         HeartModel heartModel = HeartModel.getInstance();
         ControllerInterface model1 = new HeartController(heartModel);
 
-        BeerFridgeInterface beerFridgemodel= BeerFridgeModel.getInstance();
+        BeerFridgeModel beerFridgemodel= BeerFridgeModel.getInstance();
         ControllerInterface controller1 = new BeerFridgeController(beerFridgemodel);
 
 

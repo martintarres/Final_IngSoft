@@ -15,7 +15,7 @@ public interface BeerFridgeInterface {
         int getTempActual();
         int getTempDeseada();*/
 
-
+        void setTempDeseada(int temp);
         int getHeartRate();
         int getTempDeseada();
         void registerObserver(BeatObserver o);

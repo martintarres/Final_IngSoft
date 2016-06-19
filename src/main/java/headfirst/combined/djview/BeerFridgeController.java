@@ -13,12 +13,13 @@ public class BeerFridgeController implements ControllerInterface {
     public BeerFridgeController(BeerFridgeInterface model) {
         this.model = model;
        bfAdapt=new BeerFridgeAdapter(model);
-
        view = new DJView(this, bfAdapt);
         view.createView();
         view.createControls();
         view.disableStopMenuItem();
         view.enableStartMenuItem();
+
+
          //model.initialize();
 
       /*  nvaVista=new NuevaVista(this,new BeerFridgeAdapter(model));
@@ -29,7 +30,8 @@ public class BeerFridgeController implements ControllerInterface {
 
     }
     public BeerFridgeController(BeerFridgeInterface beerModel, DJView view) {
-        this.model = model;
+        this.model = beerModel;
+        bfAdapt=new BeerFridgeAdapter(model);
         //this.nvaVista = nvaVista;
        this.view=view;
       //  bfAdapt.initialize();
