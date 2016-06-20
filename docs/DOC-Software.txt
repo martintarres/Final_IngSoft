@@ -1,0 +1,213 @@
+
+Universidad Nacional de Córdoba
+Facultad de Ciencias Exactas, Física y Naturales
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ingeniería de Software
+
+
+
+
+
+
+
+Trabajo práctico Final
+
+
+
+
+
+
+
+
+
+Integrantes:
+
+Román Gasparini
+Martín Tarres
+Franz Yépez Hinostroza
+
+
+Resumen:
+
+En el presente informe se abordará lo aprendido en la Cátedra Ingeniería de Software aplicándolo al trabajo práctico que se explicará a continuación.
+Se parte para el siguiente de líneas de código  pertenecientes al ejemplo del  libro Head firts Design Patterns. En base de ello, se procura realizar un proyecto propio, haciendo uso de las prácticas aprendidas.
+
+
+
+
+
+Desarrollo:
+
+1. Modifique el HeartModel para que sólo se pueda crear una instancia (usando el patrón Singleton)
+y extienda la ventana de control del BeatController para “tratar” de generar nuevas instancias
+cada vez que se clickea en el botton “>>”. La ventana de la BeatBar debería mostrar en texto el
+número de intentos de creación de un nuevo HeartBeat model en el texto donde se mostraba la
+frecuencia cardíaca.
+2. Crear un nuevo modelo con su controlador específico que pueda usarse para verse desde la vista
+DJView en la ventana BeatBar. Generar un java main class para poder ejecutar tal modificación
+llamándolo “My<modelName>TestDrive.java” (similar to “HeartTestDrive”). Se proveerán puntos
+adicionales por la originalidad del modelo creado.
+3. Generar una vista propia que permita usar su modelo sin modificar el código existente del ejemplo
+pero que permita mostrar los cambios gráficamente y por medio de texto.
+4. Generar un TestDrive que permita mostrar a los tres modelos trabajando al mismo tiempo (se
+esperarán ver al menos 3 ventanas BeatBar con los 3 modelos andando simultáneamente.
+5. Modificar la vista BeatBar para que permita cambiar gráficamente en tiempo de ejecución (ej.
+Mediante un dropdown box) el modelo usado (el Beat model, el Nuevo modelo y el Heartbeat
+model). Por favor use para tal implementación el patrón strategy. Generar un TestDrive que
+permita ejecutar tal acción.
+6. Utilizar algún sistema como el sistema de Issues de GitHub para gestionar las tareas y defectos
+encontrados.
+7. Incluir todos los documentos generados en el repositorio dentro de una carpeta llamada docs.
+Los documentos generados deben estar en formato Markdown. Pueden utilizar algún programa
+para editar este tipo de archivos como MarkDown Pad. De ésta manera se podrá observar el
+historial de cambios sobre los documentos y quien realizó cada cambio. 
+
+
+Nota de Entrega
+
+
+
+Manejo de las Configuraciones
+
+
+Dirección y forma de accesos a la herramienta de control de versiones
+
+
+Para el desarrollo del software usaremos la herramienta de controlo de versiones GitHub.
+Creamos un repositorio, en el cual los colaboradores podrán no sólo acceder a los items en desarrollo sino también podrán aportar sus propios progresos de forma compartida.
+
+La dirección del repositorio es: https://github.com/martintarres/Final_IngSoft
+
+
+
+
+Esquema de directorios y propósito de cada uno
+
+
+ La sección correspondiente al código desarrollado, para el caso de la rama principal,  se encontrará en la carpeta src/main/java/headfirst/combined/djview/.
+En el caso de la rama principal será:
+
+https://github.com/martintarres/Final_IngSoft/tree/master/src/main/java/headfirst/combined/djview
+
+
+Los archivos ejecutables se encuentran almacenados en la carpeta Ejecutables del repositorio, correspondiente a la última versión de la rama master.
+https://github.com/martintarres/Final_IngSoft/tree/master/Ejecutables
+Los documentos, como imágenes agregadas, serán guardados en la carpeta docs.
+
+
+
+Normas de etiquetado y de nombramiento de los archivos
+
+En concordancia con los miembros del equipo, las normas para nombrar un nuevo archivo son:
+Los nombres de las clases e interfaces creadas comienzan con mayúscula, y si el nombre es compuesto de dos o más palabras, lleva mayúscula la primera letra correspondiente a dicha palabra.
+Ejemplo: BeerFridgeModel.java
+La parte final del nombre hace referencia a su función.
+Ejemplo: BeerFridgeController especifica que es el controlador correspondiente a BeerFridge.
+
+Con respecto del etiquetado, se optó por la forma convencional.
+Ej Versión 4.2.3
+El primer número hace referencia a cambios muy profundos realizados en esta versión en comparación con la anterior.
+El segundo, a mejoras de importancia relativa.
+El tercer número denota que ha habido modificación  que no hace demasiada variación.
+
+
+Plan del esquema de ramas a usar
+
+Se inicializa el repositorio subiendo el código del Head First Design Pattern a la rama master, la única existente en el inicio. Luego se bifurcó el proyecto en ramas para el desarrollo de cada uno de los miebros.
+Las versiones más estables se subirán al master, haciendo uso de las ramas sólo para el desarrollo temporal, previniendo el futuro mergeo a la rama principal (master).
+La rama Test es en la que se desarrolló todo lo relativo a testeo. No consideramos necesario mergearlo a la rama principal, para que quedara lo más simplificada posibe.
+
+Le meto imagen de las ramas?
+
+
+
+
+Políticas de Mergeo
+
+Sólo se podrá mergear a la rama master una vez que el ítem desarrollado en la rama se encuentre estable. 
+Las condiciones de estabilidad en esa etapa son: que compile necesariamente, y que cumple la función por la cual que creada la rama a la que pertenece.
+
+
+Especificaciones de Release
+
+El proyecto será entregado en formato JAR, por lo que no es necesaria nigún instalador  específico del proyecto  para ejecutarlo.
+Cabe destacar que sí es necesario que el cliente  tenga JRE (JAVA Runtime Enviroment. El anterior se encuentra disponible:
+https://www.java.com/es/download/
+
+
+Integrantes:
+
+
+Nombre
+Función
+Forma de contacto
+Román Gasparini
+Desarrollador/Gestor de proyectos
+roman.gasparinigmail.com
+Martín Tarres
+Desarrollador/Diseñador
+martintarres@gmail.com
+Franz Yépez Hinostroza
+Desarrollador/Arquitecto
+alexander.fyh@gmail.com
+
+
+La comunicación entre los integrantes del equipo se realiza generalmente de forma presencial, por otro medio se usa solamente para acordar reuniones semanales y dar detalles generales.
+En la reunión, es necesaria la presencia de cada uno de los miembros. En ella se especifica las nuevas directrices a tomar, luego de ello se procede a trabajar de forma conjunta si la situación lo requiere.
+
+Herramienta de seguimiento de bugs 
+
+Para ello, se utiliza una herramienta propia de github.
+https://github.com/martintarres/Final_IngSoft/issues
+En ella se debe especificar el error, a qué versión corresponde, y mostrar si se pudo solucionar en el progreso.
+
+Varios:
+
+Cabe destacar que se hizo uso de la herramienta de integración continua TRAVIS CI.
+https://travis-ci.org/martintarres/Final_IngSoft
+
+Para diagrama Uml, se empeló WhiteStar Uml.
+
+Requerimientos
+
+
+
+Diagramaaaaas
+
+
+Requerimientos Funcionales:
+
+El software  debe asegurar una sola instanciación  de la clase HeartModel. Para el caso que se intente crear otro nuevo objeto tipo HeartModel, se debe mostrar la cantidad de veces fallidas que se trató de instanciar.
+
+El código  debe permitir la implementación  de un nuevo modelo con su propio controlador utilizando la vista predefinida anteriormente. 
+
+Se debe ofrecer una nueva vista propia para el nuevo modelo a desarrollar.
+
+Es necesario verificar el funcionamiento de los 3 modelos  actuando en paralelo, sin que se comprometa el comportamiento independiente  de ambos.
+
+Modificar la vista para poder elegir qué modelo correr. Esto debe poder hacerse en tiempo de ejecución.
+
+El comportamiento de los sistemas anteriores no debe verse afectado por la creación de un nuevo sistema. Esto quiere decir, que al crearse el sistema correspondiente a BeerFrdige, no se alteró las funcionalidades de los demás.
+
+Debe ser posible setear el valor de la temperatura deseada al modelo de BeerFrdige, ya sea por medio del botón Set o por los botones >> y <<.
+
+
+Requerimientos no funcionales:
+
+La temperatura actual debe tender a la temperatura deseada. Para ello, luego de un lapso de tiempo definido proporcionalmente con la diferencia inicial entre la temperatura actual y la deseada,  la diferencia en ese instante no debe ser mayor a 5.
+
+El sistema requiere de una capacitación previa del usuario, así los valores a setear son lógicos ( se debe ingresar nada más que valores enteros, y no caracteres, por ejemplo).
+
+
