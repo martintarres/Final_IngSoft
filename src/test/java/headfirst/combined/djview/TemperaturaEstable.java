@@ -2,7 +2,6 @@ package headfirst.combined.djview;
 import com.sun.javaws.exceptions.ExitException;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by Yepez Hinostroza on 19/06/2016.

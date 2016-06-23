@@ -123,8 +123,15 @@ public class BeerFridgeModel implements BeerFridgeInterface, Runnable{
         }
     }
 
-    public void setTempDeseada(int temp){
-        tempDeseada=temp;
+    public void setTempDeseada(int temp) {
+        if (temp < -10) {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+            }
+        } else {
+            tempDeseada = temp;
+        }
     }
 
     public int getTempDeseada()
