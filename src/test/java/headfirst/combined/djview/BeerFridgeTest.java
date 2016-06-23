@@ -34,37 +34,5 @@ public class BeerFridgeTest {
         controlador.increaseBPM();
         assertEquals(5,clase1.getTempDeseada());
     }
-    /*@Test
-    public void increaseBPM2() throws Exception {
-        MyAnotadorModel clase2= new MyAnotadorModel();
-        MyAnotadorController controlador= new MyAnotadorController(clase2);
-        clase2.setJUG2(-3);
-        controlador.increaseBPM();
-        assertEquals(-2,clase2.getJUG2());
-    }
 
-    @Test
-    public void decreaseBPM() throws Exception {
-        MyAnotadorModel clase3= new MyAnotadorModel();
-        MyAnotadorController controlador= new MyAnotadorController(clase3);
-        clase3.setJUG1(3);
-        controlador.decreaseBPM();
-        assertEquals(4,clase3.getJUG1());
-    }
-    @Test
-    public void decreaseBPM2() throws Exception {
-        MyAnotadorModel clase4= new MyAnotadorModel();
-        MyAnotadorController controlador= new MyAnotadorController(clase4);
-        clase4.setJUG1(-1);
-        controlador.decreaseBPM();
-        assertEquals(0,clase4.getJUG1());
-    }
-
-    @Test
-    public void setBPMt() throws Exception {
-        MyAnotadorModel clase5= new MyAnotadorModel();
-        MyAnotadorController controlador= new MyAnotadorController(clase5);
-        controlador.setBPM(30);
-        assertEquals(30,clase5.getBPM());
-        */
 }
